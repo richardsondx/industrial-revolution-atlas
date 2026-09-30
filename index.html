@@ -150,6 +150,8 @@
     .stat + .stat { padding-left: 20px; border-left: 1px solid var(--line); }
     .stat strong { display: block; font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 3.5rem); font-weight: 500; line-height: 1; }
     .stat span { display: block; color: var(--muted); margin-top: 7px; font-size: .82rem; }
+    .data-note { margin: 10px 0 0; font-size: .76rem; color: var(--muted); }
+    .data-note a { color: inherit; text-underline-offset: 2px; }
     .boundary { margin: 22px 0; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; padding: 17px 20px; background: var(--surface-2); border-left: 4px solid var(--accent); }
     .boundary svg { width: 22px; height: 22px; margin-top: 2px; color: var(--accent); }
     .boundary p { margin: 0; font-size: .92rem; }
@@ -250,7 +252,12 @@
     .method ul { padding-left: 20px; }
     .sources { columns: 2 280px; column-gap: 36px; padding-left: 20px; }
     .sources li { break-inside: avoid; margin-bottom: 10px; }
-    footer { margin-top: 38px; padding: 20px 0 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: .76rem; display: flex; justify-content: space-between; gap: 20px; }
+    footer { margin-top: 38px; padding: 20px 0 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: .76rem; }
+    .foot-meta { display: flex; justify-content: space-between; gap: 20px; }
+    .foot-note { margin: 0 0 20px; max-width: 72ch; }
+    .foot-note h2 { margin: 0 0 8px; font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--ink); }
+    .foot-note p { margin: 0; line-height: 1.65; }
+    .foot-note p strong { color: var(--ink); font-weight: 700; }
     footer a { color: inherit; text-underline-offset: 2px; }
     dialog { width: min(720px, calc(100vw - 28px)); max-height: min(840px, calc(100vh - 28px)); border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); padding: 0; box-shadow: var(--shadow); }
     dialog::backdrop { background: rgba(5, 9, 8, .68); }
@@ -461,7 +468,7 @@
       td:first-child { grid-column: 1 / -1; font-family: var(--serif); font-size: 1.25rem; font-weight: 700; }
       td::before { content: attr(data-label); display: block; color: var(--muted); font-size: .65rem; font-family: var(--sans); font-weight: 700; }
       .phase-list li { grid-template-columns: 1fr; gap: 4px; }
-      footer { flex-direction: column; }
+      .foot-meta { flex-direction: column; }
     }
     /* Editorial design pass */
     :root {
@@ -795,7 +802,8 @@
       .method { border-top-width: 3px; padding-top: 24px; }
       .method h2 { font-size: 2.6rem; }
       .sources { columns: 1; }
-      footer { gap: 6px; margin-top: 40px; }
+      footer { margin-top: 40px; }
+      .foot-meta { gap: 6px; }
       dialog { width: calc(100vw - 18px); max-height: calc(100vh - 18px); }
       .dialog-head { padding: 19px 18px 17px; }
       .dialog-head h2 { font-size: 2rem; }
@@ -917,10 +925,7 @@
       <div class="stat"><strong>5</strong><span>publicly named UNIDO 2026 momentum cases</span></div>
     </section>
 
-    <aside class="boundary">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 3 2.8 20h18.4L12 3Zm0 5.2v6.1m0 3.2v.2"/></svg>
-      <p><strong>Do not rank countries with this.</strong> Dates are approximate windows, the energy-path labels are judgment calls explained in the notes, and evidence is thinner for some countries than others. Use the atlas to understand how each country industrialized, and check the sources before quoting it. “Not classified here” means UNIDO's 2026 public release did not verify that country's classification, not that the country is pre-industrial.</p>
-    </aside>
+    <p class="data-note"><a href="#data-note">Dates are approximate and labels are judgment calls; read the note on the data.</a></p>
 
     <nav class="tabs" aria-label="Atlas views">
       <button class="tab" data-view="mapView" aria-selected="true">Map</button>
@@ -1185,7 +1190,13 @@
       </ul>
     </section>
 
-    <footer><span>Curated research snapshot, September 23, 2026</span><span>196 trajectories, 196 country-level reference sets</span><span>Built by <a href="https://www.richdackam.com" target="_blank" rel="noopener">Richardson Dackam</a></span></footer>
+    <footer>
+      <section class="foot-note" id="data-note" aria-label="How to read this atlas">
+        <h2>How to read this atlas</h2>
+        <p><strong>Do not rank countries with this.</strong> Dates are approximate windows, the energy-path labels are judgment calls explained in the notes, and evidence is thinner for some countries than others. Use the atlas to understand how each country industrialized, and check the sources before quoting it. “Not classified here” means UNIDO's 2026 public release did not verify that country's classification, not that the country is pre-industrial.</p>
+      </section>
+      <div class="foot-meta"><span>Curated research snapshot, September 23, 2026</span><span>196 trajectories, 196 country-level reference sets</span><span>Built by <a href="https://www.richdackam.com" target="_blank" rel="noopener">Richardson Dackam</a></span></div>
+    </footer>
   </main>
 
   <dialog id="countryDialog">
